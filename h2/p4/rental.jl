@@ -94,14 +94,17 @@ end
 	For example: there are 5 cars moving from agency 2 to agency 6
 	Agency 6 has 2 cars and it require another 5 cars to fulfill the requirements
 	
-	0 0 0 0 0 0 0 0 0 0
-	0 0 1 0 0 5 1 0 0 0
-	0 0 0 0 0 0 0 0 0 0
-	0 0 0 0 0 0 0 0 0 0
-	0 0 0 3 0 0 0 0 0 0
-	0 0 0 0 0 0 0 0 0 0
-	0 0 0 0 0 0 0 0 0 0
-	0 0 0 0 0 0 0 0 0 5
-	2 0 3 0 0 0 0 1 0 0
-	0 0 0 0 0 0 0 0 0 0
+	i/j	1 2 3 4 5 6 7 8 9 10
+	1	0 0 0 0 0 0 0 0 0 0
+	2	0 0 1 0 0 5 1 0 0 0
+	3	0 0 0 0 0 0 0 0 0 0
+	4	0 0 0 0 0 0 0 0 0 0
+	5	0 0 0 3 0 0 0 0 0 0
+	6	0 0 0 0 0 0 0 0 0 0
+	7	0 0 0 0 0 0 0 0 0 0
+	8	0 0 0 0 0 0 0 0 0 5
+	9	2 0 3 0 0 0 0 1 0 0
+	10	0 0 0 0 0 0 0 0 0 0
+
+	Further explanation is commented with the codes
 =#

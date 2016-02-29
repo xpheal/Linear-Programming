@@ -75,4 +75,5 @@ close(result)
 
 	Each senior employees only meet with the candidate once
 	Each timeslot is only occupied by one senior employees except for lunch
+	Further explanation is commented with the codes
 =#

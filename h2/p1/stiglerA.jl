@@ -39,11 +39,8 @@ m = Model()
 # The total amount of nutrients obtained by the optimized data has to be more than the minimum requirement
 @addConstraint(m, flow[i in 1:n2], sum(optimizeData[1:m2,i]) >= minNutrient[i])
 
-# Calculate the total cost
-@defExpr(totalCost, sum(cost))
-
 # Minimize the total cost
-@setObjective(m, Min, totalCost)
+@setObjective(m, Min, sum(cost))
 stiglerCost = 39.93
 
 status = solve(m)
@@ -91,4 +88,5 @@ end
 	Navy Beans, Dried: 0.061
 
 	More accurate results can be obtained in the comments above
+	Further explanation is commented with the codes
 =#

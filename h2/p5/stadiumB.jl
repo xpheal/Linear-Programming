@@ -32,8 +32,8 @@ status = solve(m)
 week_Without_Reduction = getObjectiveValue(m)
 
 
-# Plot trade-off curve of cost against number of weeks early we wish the staidum to be completed
-weekEarly = 0
+# Plot trade-off curve of additional cost against number of weeks early we wish the staidum to be completed
+weekEarly = 0 # To set how many weeks early you want the stadium to be completed, incremented by 1 in the while loop
 weeks = [] # Array to store weeks for plotting
 cost = [] # Array to store cost for plotting
 # While loop to generate all possible solutions for plotting graph
@@ -61,18 +61,39 @@ while status != :Infeasible
 	if status != :Infeasible
 		# Store the results
 		push!(weeks, weekEarly)
-		push!(cost, getObjectiveValue(m) * 1000)
+		push!(cost, getObjectiveValue(m))
 		weekEarly += 1
 	end
 end
 
+# Print out results to check for correctness
+println(weeks')
+println(cost')
+
+# Plot the result
 plotResult = plot(
 	x = weeks, 
 	y = cost,
-	Guide.title("Week early against Cost"),
-	Guide.xlabel("Week early"),
-	Guide.ylabel("Cost"),
-	Geom.line
+	Guide.title("Time saved(weeks) against Additional Cost(\$1k)"),
+	Guide.xlabel("Time saved(weeks)"),
+	Guide.ylabel("Additional Cost(\$1k)"),
+	Geom.line,
+	Geom.point
 )
 
-draw(PDF("result.pdf",4inch,3inch), plotResult)
+# Save result to pdf
+draw(PDF("result.pdf",8inch,8inch), plotResult)
+
+# Results that are plotted
+# Weeks: [0	1  2  3  4  5  6  7   8   9   10  11  12 ]
+# Cost:  [0	15 31 47 63 80 97 123 153 183 213 255 297]
+
+
+#=	
+	Explanation
+	1) Obtained the optimum completion time without any week reduction
+	2) Decrement the optimum completion time by 1 until no solution is feasible
+	3) For every decrement, calculate the cost
+	4) Store the time reduced and cost in an array, then plot the graph
+	Further explanation is commented with the codes
+=#

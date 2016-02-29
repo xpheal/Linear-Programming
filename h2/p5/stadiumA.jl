@@ -53,5 +53,5 @@ end
 	Explanation
 	The earliest possible date of completion is 64 weeks.
 	The problem is solved by using network flow model.
-	Details are commented inline with the codes.
+	Further explanation is commented with the codes.
 =#

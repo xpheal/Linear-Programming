@@ -75,4 +75,5 @@ println("Project3: ", getValue(sum(proj3)))
 
 	The worker-months requirement is met.
 	The arrays above shows that each projects meet their constraints.
+	Further explanation is commented with the codes
 =#

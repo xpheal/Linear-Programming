@@ -32,7 +32,7 @@ status = solve(m)
 week_Without_Reduction = getObjectiveValue(m)
 
 
-# Plot trade-off curve of cost against number of weeks early we wish the staidum to be completed
+# Calculate the maximum profit that the builder could make
 m = Model()
 
 # Variable for starting time of each tasks
@@ -45,14 +45,35 @@ m = Model()
 # The starting time of each tasks can only begin after it's predecessor is complete
 @addConstraint(m, link[i in 1:numTasks, j in pred[i]], timeStart[i] >= timeStart[j] + durations[j] - timeReduc[j])
 
-# The time to complete the last task must be more than the optimize time minus the weekEarly variable
-# We can use the weekEarly variable to control the amount of week early we want the stadium to complete
-# @addConstraint(m, timeStart[end] + durations[end] == )
-
-# Minimize the cost of week reduction
-@setObjective(m, Max, 30(week_Without_Reduction - timeStart[end] - durations[end]) - dot(timeReduc, costReduc))
+# The bonus for every extra week the project finishes early
+@defExpr(m, bonus, 30 * (week_Without_Reduction - timeStart[end] - durations[end]))
+# Cost of the project
+@defExpr(m, cost, dot(timeReduc, costReduc))
+# Maximize the profit
+@setObjective(m, Max, bonus - cost)
 status = solve(m)
 
-println(getObjectiveValue(m))
-println(getValue(timeStart[end] + durations[end]))
-println(getValue(timeReduc'))
+# Print results
+println("Optimal Profit: ", getObjectiveValue(m))
+println("Time project is completed: ", getValue(timeStart[end] + durations[end]))
+println("Time saved: ", getValue(week_Without_Reduction - timeStart[end] - durations[end]))
+println("Time reduction: ", getValue(timeReduc'))
+
+# Results
+# Optimal Profit: 87.0
+# Time project is completed: 57.0
+# Time saved: 7.0
+# Time reduction: [0.0 0.0 1.0 0.0 2.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 3.0 0.0]
+
+#=
+	Explanation
+	The time for project completion to maximize profit is 57 weeks.
+	The time saved is 7 weeks.
+	Profit is $87k.
+
+	1) Calculate the optimal completion time without week reduction
+	2) Bonus = 30 * (original optimal time - current optimal time)
+	3) Maximize the profit
+
+	Further explanation is commented with the code
+=#
