@@ -1,0 +1,21 @@
+Total Cost: 152.63901632295628
+[0 0 0 0 0 0 0 0 0 0
+ 0 0 1 0 0 5 1 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 3 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 5
+ 2 0 3 0 0 0 0 1 0 0
+ 0 0 0 0 0 0 0 0 0 0]
+Required cars: 10 Cars present after the day: 10.0
+Required cars: 6 Cars present after the day: 6.0
+Required cars: 8 Cars present after the day: 8.0
+Required cars: 11 Cars present after the day: 11.0
+Required cars: 9 Cars present after the day: 9.0
+Required cars: 7 Cars present after the day: 7.0
+Required cars: 15 Cars present after the day: 15.0
+Required cars: 7 Cars present after the day: 7.0
+Required cars: 9 Cars present after the day: 9.0
+Required cars: 12 Cars present after the day: 12.0
