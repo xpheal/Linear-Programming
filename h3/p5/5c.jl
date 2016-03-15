@@ -36,7 +36,7 @@ for i in 1:t-1
 	@addConstraint(m, Bposition[:,i+1] .== Bposition[:,i] + cnst.*Bvelocity[:,i])
 	@addConstraint(m, Avelocity[:,i+1] .== Avelocity[:,i] + Athrust[:,i])
 	@addConstraint(m, Bvelocity[:,i+1] .<= Bvelocity[:,i] + Bthrust[:,i])
-	# Don't exceed speed limit
+	# Don't exceed speed limit, 35mph
 	@addConstraint(m, Avelocity[:,i+1] .<= 35)
 	@addConstraint(m, Bvelocity[:,i+1] .<= 35)
 end
@@ -61,3 +61,4 @@ layer2 = layer(x = Bpost[1,:][:], y = Bpost[2,:][:], Geom.line, Theme(default_co
 
 Graph1 = plot(layer1, layer2, Guide.title("Hovercraft trajectories"), Guide.xlabel("x"), Guide.ylabel("y"), Guide.manual_color_key("Legend", ["Alice", "Bob"], ["red", "blue"]))
 
+draw(PDF("5c.pdf", 8inch, 8inch), Graph1)

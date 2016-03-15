@@ -55,3 +55,4 @@ layer2 = layer(x = Bpost[1,:][:], y = Bpost[2,:][:], Geom.line, Theme(default_co
 
 Graph1 = plot(layer1, Guide.title("Hovercraft trajectories"), Guide.xlabel("x"), Guide.ylabel("y"), Guide.manual_color_key("Legend", ["Alice", "Bob"], ["red", "blue"]))
 
+draw(PDF("5a.pdf", 8inch, 8inch), Graph1)
