@@ -15,7 +15,7 @@ x_err_axis = collect(1:1:t-1)
 
 # Autoregressive Moving Average model
 # Generate the A array
-k = 5 # Recent inputs
+k = 1 # Recent inputs
 A = zeros(t,2k)
 
 for i = 1:k
@@ -27,7 +27,7 @@ end
 ARMA = A\y_output
 ARMA_output = A*ARMA
 
-# Error in the Autoregressive Moving Average model
+# Error in the Autoregressive Moving Average model, max number of recent inputs = 99
 MaxWidth = 99
 ARMA_err = zeros(MaxWidth)
 for width = 1:MaxWidth
@@ -54,7 +54,7 @@ errorGraph = plot(layer5, Guide.title("Error of the ARMA model compared to origi
 
 # Draw result to pdf
 draw(PDF("ARMAresult.pdf", 8inch, 8inch), ARMA_Graph)
-draw(PDF("ARMAError.pdf", 8inch, 8inch), ARMA_errorGraph)
+draw(PDF("ARMAError.pdf", 8inch, 8inch), errorGraph)
 
 #=
     Explanation
@@ -71,6 +71,8 @@ draw(PDF("ARMAError.pdf", 8inch, 8inch), ARMA_errorGraph)
 
     After plotting the error graph, it can be seen that ARMA model has higher accuracy compare to just the
     AR or MA model
+    ARMA_Graph: result for the ARMA model compared to the original output
+    errorGraph: Difference between the ARMA model with the original output by increasing the number of recent inputs
 
     More explanation are in the comments
 =#

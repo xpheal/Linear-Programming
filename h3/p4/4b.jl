@@ -13,6 +13,7 @@ yCoord = raw[:,2]
 order = 2
 A = zeros(k,(order+1)*2)
 
+# Use if to generate A for spline fit
 for i in 1:k
 	for j = 1:order
 		if xCoord[i] < 4
@@ -46,6 +47,7 @@ for j = 1:order
 	ffine = [ffine.*xfine ones(npts,1)]
 end
 
+# Plot the result
 yfine = zeros(npts)
 for i in 1:npts
 	if xfine[i] < 4
@@ -61,5 +63,13 @@ end
 layer1 = layer(x = xCoord, y = yCoord, Geom.point, Theme(default_color=color("red")))
 layer2 = layer(x = xfine, y = yfine, Geom.line, Theme(default_color=color("blue")))
 
+# Draw the graph
 Graph = plot(layer1, layer2, Guide.title("Spline fit"), Guide.xlabel("x"), Guide.ylabel("y"), Guide.manual_color_key("Legend", ["points", "best fit"], ["red", "blue"]))
 draw(PDF("4b.pdf", 8inch, 8inch), Graph)
+
+#=
+	Explanation
+	More explanation commented in code
+	Basically this program takes in points and generate a spline fit graph
+	Both quadratic pieces have same value and slope at x = 4, can be seen in graph
+=#

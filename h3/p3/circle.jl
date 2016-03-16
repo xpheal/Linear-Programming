@@ -11,6 +11,7 @@ m = Model()
 # center = (x[1],x[2]), radius = x[3]
 @defVar(m, x[1:3] >= 0)
 
+# Set up the constants
 A = [1 0 0; 0 1 0; 0 0 0]
 b = zeros(l, 3)
 b[:,1] = points[1,:]
@@ -38,3 +39,13 @@ Graph1 = plot(layer1, layer2, Guide.title("Points in circle"), Guide.xlabel("x")
 
 draw(PDF("Circle.pdf", 8inch, 8inch), Graph1)
 
+#=
+	Use Second order Cone Constraint
+	A*x = center of the circles
+	b[i,:]' = x and y coordinates of the point
+	norm(A*x) - b[i,:]') gives you the distance between all the center and the point
+	i = 1,2,3,...,number of points
+	set the constraint to be smaller than the radius
+
+	More explanation in comment
+=#

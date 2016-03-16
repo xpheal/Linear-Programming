@@ -52,7 +52,7 @@ end
 AR = A\y_output
 AR_output = A*AR
 
-# Error in the Autoregressive model
+# Error in the Autoregressive model, max number of recent inputs = 99
 MaxWidth = 99
 AR_err = zeros(MaxWidth)
 for width = 1:MaxWidth
@@ -96,6 +96,11 @@ draw(PDF("Error.pdf", 8inch, 8inch), errorGraph)
     The difference between the predicted result and the original result is plotted in the error graph
     The error graph is plotted using 1:99 recent inputs
     As more inputs are included in the MA or AR model, the error decreases and the accuracy increases
+
+    MA_Graph: Result for the MA model
+    AR_Graph: Result for the AR model
+    MAAR_Graph: Compare MA model to AR model
+    errorGraph: Difference between the models output and the original output when you increase the number of recent inputs    
 
     More explanation are in the comments
 =#

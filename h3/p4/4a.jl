@@ -47,3 +47,9 @@ layer2 = layer(x = xfine, y = yfine, Geom.line, Theme(default_color=color("blue"
 
 Graph = plot(layer1, layer2, Guide.title("Polynomial fit"), Guide.xlabel("x"), Guide.ylabel("y"), Guide.manual_color_key("Legend", ["points", "best fit"], ["red", "blue"]))
 draw(PDF("4a.pdf", 8inch, 8inch), Graph)
+
+#=
+	Explanation
+	Find the best fit for the points using Polynomial fit
+	The model has zero fluorescence when the intensity is zero.
+=#

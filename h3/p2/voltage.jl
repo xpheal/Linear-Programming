@@ -50,7 +50,7 @@ function solveVoltageOpposite(lbd)
 	@defExpr(m, rv, output[2:t] - output[1:t-1])
 
 	# Minimize both R(v) and dist, lbd is used to control the tradeoff
-	@setObjective(m, Min, lbd * dot(dist,dist) + dot(rv,rv))
+	@setObjective(m, Min, dot(dist,dist) + lbd * dot(rv,rv))
 
 	status = solve(m)
 
@@ -105,6 +105,12 @@ draw(PDF("graph4.pdf", 8inch, 8inch), Graph4)
 	Explanation
 	Voltage is smoothed and tradeoffs are calculated
 	Weight is used to minimize either dist or R(v)
+	
+	Graph1: The graph with weight = 1
+	Graph2: The graph with weight = 0, all weight on dist
+	Graph3: The graph with weight = infinity, all weight on R(v), accomplished by modifying the code and move the weight to dist
+	Graph4: A more smoothed voltage when compare to graph 1
+	Graph5: Tradeoff between dist and R(v)
 
 	More explanation is commented in code	
 =#
